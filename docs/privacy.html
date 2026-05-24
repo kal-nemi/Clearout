@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearOut — Privacy Policy</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-orange: #FF5C1A;
+            --ink-black: #1A1410;
+            --warm-cream: #F9F7F5;
+            --muted-brown: #7A726A;
+            --border-color: #EDEAE6;
+            --card-shadow: 0 10px 30px rgba(26, 20, 16, 0.04), 0 1px 3px rgba(26, 20, 16, 0.02);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--warm-cream);
+            color: var(--ink-black);
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            max-width: 760px;
+            width: 100%;
+            padding: 50px 45px;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        /* Branded Header Section */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 2px solid var(--warm-cream);
+            padding-bottom: 30px;
+            margin-bottom: 35px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(255, 92, 26, 0.15);
+        }
+
+        .header-text h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--ink-black);
+            letter-spacing: -0.5px;
+        }
+
+        .header-text p {
+            font-size: 13px;
+            color: var(--brand-orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        .metadata {
+            font-size: 14px;
+            color: var(--muted-brown);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .metadata .dot {
+            width: 4px;
+            height: 4px;
+            background-color: var(--brand-orange);
+            border-radius: 50%;
+        }
+
+        /* Content Styling */
+        h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink-black);
+            margin-top: 30px;
+            margin-bottom: 12px;
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 16px;
+            background-color: var(--brand-orange);
+            border-radius: 2px;
+        }
+
+        p {
+            font-size: 15px;
+            color: #3C3630;
+            margin-bottom: 18px;
+            font-weight: 400;
+        }
+
+        p strong {
+            color: var(--ink-black);
+            font-weight: 600;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            list-style-type: none;
+        }
+
+        li {
+            font-size: 15px;
+            color: #3C3630;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--brand-orange);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 6px;
+        }
+
+        .highlight-box {
+            background-color: var(--warm-cream);
+            border-left: 4px solid var(--brand-orange);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-style: italic;
+            color: var(--ink-black);
+        }
+
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 25px;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--muted-brown);
+        }
+
+        .footer a {
+            color: var(--brand-orange);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+        }
+
+        .footer a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 30px 20px;
+                border-radius: 16px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                padding-bottom: 20px;
+                margin-bottom: 25px;
+            }
+
+            .header-text h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header with Mini Logo -->
+        <header class="header">
+            <img class="logo" src="assets/logo.png" alt="ClearOut Logo">
+            <div class="header-text">
+                <h1>ClearOut</h1>
+                <p>Privacy Policy</p>
+            </div>
+        </header>
+
+        <div class="metadata">
+            <span>Last Updated: May 25, 2026</span>
+            <span class="dot"></span>
+            <span>Version 1.0</span>
+        </div>
+
+        <p><strong>ClearOut</strong> (the "Application") is built and engineered as a 100% local-first utilities application. We highly value your personal privacy and are committed to safeguarding all user data. This privacy document details how our application handles information, permissions, and device storage.</p>
+
+        <div class="highlight-box">
+            <p>"At ClearOut, we believe your personal photos should remain personal. The application indexes and processes your media purely on your device, requiring zero network calls or remote data uploads."</p>
+        </div>
+
+        <h2>1. Data Collection & Transmission</h2>
+        <p><strong>We do NOT collect, harvest, store, or transmit any of your personal data, photos, metadata, or telemetry metrics.</strong> All photo indexing, gallery binning, deletion queuing, and stats aggregation operations are computed locally in-memory on your device using Android's native secure <strong>MediaStore Scoped Storage APIs</strong>. Your media never leaves your device.</p>
+
+        <h2>2. Permissions Requested</h2>
+        <p>To deliver a smooth utility experience, the Application requests only the narrowest possible permissions:</p>
+        <ul>
+            <li><strong>READ_MEDIA_IMAGES / READ_EXTERNAL_STORAGE:</strong> Solely utilized to load image cataloging details (URIs, file dimensions, file sizes, and date stamps) in order to render them inside the Tinder-style swipe cards interface.</li>
+            <li><strong>VIBRATE:</strong> Used to trigger standard, satisfying haptic clicks synchronizing with swipe physical motions.</li>
+        </ul>
+
+        <h2>3. Third-Party Libraries & Telemetry</h2>
+        <p>The Application does not include any third-party background trackers, analytical scripts (e.g., Google Analytics, Firebase Analytics), or target advertisement networks. We do not track user behavior or usage telemetry.</p>
+
+        <h2>4. Data Reset & Control</h2>
+        <p>All accumulated user progress metrics (e.g., photos cleared, MBs freed, and streak counters) are saved locally within your device's <strong>Jetpack Preferences DataStore</strong>. You can completely and permanently delete this telemetry at any time by selecting the <strong>Reset Stats</strong> action inside the in-app overflow menu (`⋮`). Doing so clears all local caches instantly.</p>
+
+        <h2>5. Contact & Support Information</h2>
+        <p>If you have any questions, suggestions, or policy feedback, please feel free to reach out to us at: <a href="mailto:support@clearout.app" style="color: var(--brand-orange); text-decoration: none; font-weight: 500;">support@clearout.app</a>.</p>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 ClearOut. All rights reserved.</p>
+            <p style="margin-top: 5px;">Hosted with pride on <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>
