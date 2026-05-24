@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="140"
+    android:viewportHeight="140">
+
+    <!-- Base storage bar -->
+    <path
+        android:fillColor="#26FFFFFF"
+        android:pathData="M 27 58 L 113 58 A 5 5 0 0 1 118 63 A 5 5 0 0 1 113 68 L 27 68 A 5 5 0 0 1 22 63 A 5 5 0 0 1 27 58 Z" />
+
+    <!-- Used storage bar -->
+    <path
+        android:fillColor="#E6FFFFFF"
+        android:pathData="M 27 58 L 77 58 A 5 5 0 0 1 82 63 A 5 5 0 0 1 77 68 L 27 68 A 5 5 0 0 1 22 63 A 5 5 0 0 1 27 58 Z" />
+
+    <!-- Swipe curve -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M 82 63 Q 100 63 108 48" />
+
+    <!-- Arrow head -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M 102 42 L 108 48 L 114 44" />
+
+    <!-- Dot accent -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 109 42 A 5 5 0 0 1 109 52 A 5 5 0 0 1 109 42 Z" />
+
+</vector>
