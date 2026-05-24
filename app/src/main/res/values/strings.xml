@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ClearOut</string>
+    <string name="widget_small_description">ClearOut — Quick storage stats</string>
+    <string name="widget_large_description">ClearOut — Storage stats &amp; streak</string>
 </resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Large Widget (4x2): Shows cleared percentage + streak + total deleted.
+    Tap anywhere to launch ClearOut directly to the swipe screen.
+-->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="250dp"
+    android:minHeight="110dp"
+    android:targetCellWidth="4"
+    android:targetCellHeight="2"
+    android:updatePeriodMillis="1800000"
+    android:widgetCategory="home_screen"
+    android:description="@string/widget_large_description"
+    android:previewLayout="@layout/widget_large_preview"
+    android:resizeMode="horizontal|vertical"
+    android:initialLayout="@layout/widget_large_preview" />
