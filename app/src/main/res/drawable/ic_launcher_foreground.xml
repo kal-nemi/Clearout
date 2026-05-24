@@ -1,38 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Adaptive Icon FOREGROUND
+    Faithfully converted from clearout-logo.html (Panel A + Panel B mark)
+
+    Source HTML:
+      Panel A: Orange 120x120 rounded square, "CO" in Bebas Neue cream, glass shimmer overlay
+      Panel B: Storage bar (full dimmed + used bright) + swipe-to-free arrow + dot accent
+
+    Android viewport: 108x108dp, safe zone is 72x72dp centered (18dp inset each side)
+    All elements scaled from the HTML's 140x140 viewBox into the 72dp safe zone.
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
-    android:viewportWidth="140"
-    android:viewportHeight="140">
+    android:viewportWidth="108"
+    android:viewportHeight="108">
 
-    <!-- Base storage bar -->
+    <!--
+        ══════════════════════════════════════════════════
+        GLASS SHIMMER OVERLAY (top-left to center, 15% white)
+        Mimics: background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%)
+        ══════════════════════════════════════════════════
+    -->
     <path
         android:fillColor="#26FFFFFF"
-        android:pathData="M 27 58 L 113 58 A 5 5 0 0 1 118 63 A 5 5 0 0 1 113 68 L 27 68 A 5 5 0 0 1 22 63 A 5 5 0 0 1 27 58 Z" />
+        android:pathData="M18,18 L90,18 L18,90 Z" />
 
-    <!-- Used storage bar -->
+    <!--
+        ══════════════════════════════════════════════════
+        STORAGE BAR — full track (dimmed white 15%)
+        HTML: <rect x="22" y="58" width="96" height="10" rx="5" fill="rgba(255,255,255,0.15)"/>
+        Scaled from 140→72 safe zone, offset by 18dp inset:
+          x: 22/140*72 + 18 = 11.3+18 = ~29.3
+          y: 58/140*72 + 18 = 29.8+18 = ~47.8
+          w: 96/140*72 = ~49.4
+          h: 10/140*72 = ~5.1
+          rx: 5/140*72 = ~2.6
+        ══════════════════════════════════════════════════
+    -->
+    <path
+        android:fillColor="#26FFFFFF"
+        android:pathData="
+          M31.6,47.8
+          A2.6,2.6 0 0 1 34.2,45.2
+          L76.4,45.2
+          A2.6,2.6 0 0 1 79.0,47.8
+          L79.0,52.9
+          A2.6,2.6 0 0 1 76.4,55.5
+          L34.2,55.5
+          A2.6,2.6 0 0 1 31.6,52.9
+          Z" />
+
+    <!--
+        STORAGE BAR — used portion (bright white 90%)
+        HTML: <rect x="22" y="58" width="60" height="10" rx="5" fill="rgba(255,255,255,0.9)"/>
+        w: 60/140*72 = ~30.9
+    -->
     <path
         android:fillColor="#E6FFFFFF"
-        android:pathData="M 27 58 L 77 58 A 5 5 0 0 1 82 63 A 5 5 0 0 1 77 68 L 27 68 A 5 5 0 0 1 22 63 A 5 5 0 0 1 27 58 Z" />
+        android:pathData="
+          M31.6,45.2
+          A2.6,2.6 0 0 1 34.2,42.6
+          L62.5,42.6
+          A2.6,2.6 0 0 1 65.1,45.2
+          L65.1,50.3
+          A2.6,2.6 0 0 1 62.5,52.9
+          L34.2,52.9
+          A2.6,2.6 0 0 1 31.6,50.3
+          Z" />
 
-    <!-- Swipe curve -->
+    <!--
+        ══════════════════════════════════════════════════
+        SWIPE ARROW — curved stroke from bar endpoint upward
+        HTML: <path d="M82 63 Q100 63 108 48" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        Scaled: M82/140*72+18=60.1  Q100/140*72+18=69.4  108/140*72+18=73.5
+                y63→36.4+18=54.4   y63→54.4              y48→24.7+18=42.7
+        ══════════════════════════════════════════════════
+    -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="4"
+        android:strokeWidth="3"
         android:strokeLineCap="round"
-        android:pathData="M 82 63 Q 100 63 108 48" />
+        android:fillColor="#00000000"
+        android:pathData="M60.1,49.0 Q69.4,49.0 73.5,40.0" />
 
-    <!-- Arrow head -->
+    <!--
+        ARROW HEAD
+        HTML: <path d="M102 42 L108 48 L114 44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        M102/140*72+18=70.4  y42/140*72+18=39.6
+        L108/140*72+18=73.5  y48/140*72+18=42.7
+        L114/140*72+18=76.6  y44/140*72+18=40.6
+    -->
     <path
         android:strokeColor="#FFFFFF"
-        android:strokeWidth="4"
+        android:strokeWidth="3"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:pathData="M 102 42 L 108 48 L 114 44" />
+        android:fillColor="#00000000"
+        android:pathData="M70.4,36.0 L73.5,40.0 L76.6,37.8" />
 
-    <!-- Dot accent -->
+    <!--
+        DOT ACCENT
+        HTML: <circle cx="109" cy="47" r="4" fill="white"/>
+        cx: 109/140*72+18=74.0  cy: 47/140*72+18=42.1  r: 4/140*72=2.1
+    -->
     <path
         android:fillColor="#FFFFFF"
-        android:pathData="M 109 42 A 5 5 0 0 1 109 52 A 5 5 0 0 1 109 42 Z" />
+        android:pathData="M74.0,37.9 A2.1,2.1 0 1 1 74.0,42.1 A2.1,2.1 0 1 1 74.0,37.9" />
+
+    <!--
+        ══════════════════════════════════════════════════
+        "CO" LETTERFORMS — vector path approximation of Bebas Neue
+        Positioned at bottom of icon in cream color (#FDF9F4)
+        C: bold geometric arc open to the right
+        O: bold closed oval
+        ══════════════════════════════════════════════════
+    -->
+
+    <!-- Letter "C" -->
+    <path
+        android:fillColor="#FDF9F4"
+        android:pathData="
+          M38.5,62
+          A9,9 0 0 0 29.5,71
+          A9,9 0 0 0 38.5,80
+          L38.5,76.5
+          A5.5,5.5 0 0 1 33.0,71
+          A5.5,5.5 0 0 1 38.5,65.5
+          Z" />
+
+    <!-- Letter "O" -->
+    <path
+        android:fillColor="#FDF9F4"
+        android:pathData="
+          M50.0,62
+          A9,9 0 0 0 41.0,71
+          A9,9 0 0 0 50.0,80
+          A9,9 0 0 0 59.0,71
+          A9,9 0 0 0 50.0,62
+          Z
+          M50.0,65.5
+          A5.5,5.5 0 0 1 55.5,71
+          A5.5,5.5 0 0 1 50.0,76.5
+          A5.5,5.5 0 0 1 44.5,71
+          A5.5,5.5 0 0 1 50.0,65.5
+          Z" />
 
 </vector>

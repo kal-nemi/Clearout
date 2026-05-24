@@ -48,15 +48,11 @@ class HomeViewModel @Inject constructor(
     fun loadStorageAndGalleryMetadata() {
         viewModelScope.launch {
             try {
-                // Calculate device storage values using StatFs
                 val stat = StatFs(Environment.getDataDirectory().path)
                 val totalBytes = stat.totalBytes
                 val freeBytes = stat.freeBytes
                 val usedBytes = totalBytes - freeBytes
-
-                // Retrieve quick metadata photo count
                 val photos = repository.getPhotos()
-
                 _state.value = _state.value.copy(
                     totalPhotosCount = photos.size,
                     totalStorageBytes = totalBytes,
@@ -66,6 +62,17 @@ class HomeViewModel @Inject constructor(
             } catch (e: Exception) {
                 e.printStackTrace()
             }
+        }
+    }
+
+    /**
+     * Wipes all gamification progress (streak, XP, totals).
+     * Triggered from the overflow Settings menu on the Home screen.
+     * Onboarding state is preserved — the user will NOT see the intro again.
+     */
+    fun resetStats() {
+        viewModelScope.launch {
+            dataStore.resetGamification()
         }
     }
 }

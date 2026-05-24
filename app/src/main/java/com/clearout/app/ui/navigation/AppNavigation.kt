@@ -14,6 +14,7 @@ import com.clearout.app.ui.home.HomeScreen
 import com.clearout.app.ui.home.HomeViewModel
 import com.clearout.app.ui.onboarding.OnboardingScreen
 import com.clearout.app.ui.results.ResultsScreen
+import com.clearout.app.ui.splash.SplashScreen
 import com.clearout.app.ui.swipe.SwipeScreen
 import com.clearout.app.ui.swipe.SwipeViewModel
 
@@ -22,18 +23,28 @@ fun AppNavigation(dataStore: GamificationDataStore) {
     val navController = rememberNavController()
     val gamificationState by dataStore.gamificationFlow.collectAsState(initial = null)
 
-    // Wait until preferences are loaded to avoid navigation jumping
-    val state = gamificationState ?: return
-    val startDestination = if (state.onboardingCompleted) {
-        Screen.Home.route
-    } else {
-        Screen.Onboarding.route
-    }
-
     NavHost(
         navController = navController,
-        startDestination = startDestination
+        // Always start with the branded Compose splash screen
+        startDestination = Screen.Splash.route
     ) {
+        // 0. Animated Splash Screen
+        composable(Screen.Splash.route) {
+            SplashScreen(
+                onSplashComplete = {
+                    // After splash, decide where to go based on onboarding state
+                    val destination = if (gamificationState?.onboardingCompleted == true) {
+                        Screen.Home.route
+                    } else {
+                        Screen.Onboarding.route
+                    }
+                    navController.navigate(destination) {
+                        popUpTo(Screen.Splash.route) { inclusive = true }
+                    }
+                }
+            )
+        }
+
         // 1. Onboarding Screen
         composable(Screen.Onboarding.route) {
             OnboardingScreen(

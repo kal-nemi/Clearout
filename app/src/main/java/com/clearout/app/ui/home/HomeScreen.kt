@@ -9,6 +9,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -35,13 +36,48 @@ fun HomeScreen(
 ) {
     val context = LocalContext.current
     val uiState by viewModel.state.collectAsStateWithLifecycle()
+    val stats = uiState.gamification
+
+    // State for overflow menu and reset confirmation dialog
+    var showMenu by remember { mutableStateOf(false) }
+    var showResetDialog by remember { mutableStateOf(false) }
 
     // Trigger reload whenever entering screen
     LaunchedEffect(Unit) {
         viewModel.loadStorageAndGalleryMetadata()
     }
 
-    val stats = uiState.gamification
+    // Confirmation dialog for destructive Reset Stats action
+    if (showResetDialog) {
+        AlertDialog(
+            onDismissRequest = { showResetDialog = false },
+            title = { Text("Reset All Stats?", fontWeight = FontWeight.Bold) },
+            text = {
+                Text(
+                    "This will permanently clear your streak, XP, and total photos cleared. " +
+                    "Your photos will NOT be affected. This cannot be undone."
+                )
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        viewModel.resetStats()
+                        showResetDialog = false
+                    }
+                ) {
+                    Text("Reset", color = ClearoutOrange, fontWeight = FontWeight.Bold)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showResetDialog = false }) {
+                    Text("Cancel")
+                }
+            },
+            containerColor = ClearoutPaper,
+            titleContentColor = ClearoutText,
+            textContentColor = ClearoutMuted
+        )
+    }
 
     // Infinite float animation for flame glow
     val infiniteTransition = rememberInfiniteTransition(label = "streak_glow")
@@ -83,7 +119,7 @@ fun HomeScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            // Top Bar: Level & Refresh Action
+            // ── Top Bar: Level, Sync button, Overflow Menu ──
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -104,17 +140,64 @@ fun HomeScreen(
                     )
                 }
 
-                IconButton(
-                    onClick = { viewModel.loadStorageAndGalleryMetadata() },
-                    modifier = Modifier.background(ClearoutPaper, RoundedCornerShape(12.dp))
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Refresh,
-                        contentDescription = "Reload",
-                        tint = ClearoutText
-                    )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    // Sync button: re-reads storage numbers from device. Does NOT reset stats.
+                    TooltipBox(
+                        positionProvider = TooltipDefaults.rememberPlainTooltipPositionProvider(),
+                        tooltip = {
+                            PlainTooltip { Text("Refresh storage data") }
+                        },
+                        state = rememberTooltipState()
+                    ) {
+                        IconButton(
+                            onClick = { viewModel.loadStorageAndGalleryMetadata() },
+                            modifier = Modifier.background(ClearoutPaper, RoundedCornerShape(12.dp))
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Refresh,
+                                contentDescription = "Refresh storage data",
+                                tint = ClearoutText
+                            )
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.width(8.dp))
+
+                    // Overflow menu: contains the dangerous Reset Stats action
+                    Box {
+                        IconButton(
+                            onClick = { showMenu = true },
+                            modifier = Modifier.background(ClearoutPaper, RoundedCornerShape(12.dp))
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.MoreVert,
+                                contentDescription = "More options",
+                                tint = ClearoutText
+                            )
+                        }
+                        DropdownMenu(
+                            expanded = showMenu,
+                            onDismissRequest = { showMenu = false },
+                            containerColor = ClearoutPaper
+                        ) {
+                            DropdownMenuItem(
+                                text = {
+                                    Text(
+                                        "Reset Stats",
+                                        color = ClearoutOrange,
+                                        fontWeight = FontWeight.SemiBold
+                                    )
+                                },
+                                onClick = {
+                                    showMenu = false
+                                    showResetDialog = true
+                                }
+                            )
+                        }
+                    }
                 }
             }
+
 
             // Circular Storage Progress Ring
             Box(
