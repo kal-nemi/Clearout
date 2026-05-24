@@ -1,5 +1,7 @@
 package com.clearout.app.ui.home
 
+import androidx.compose.material3.ExperimentalMaterial3Api
+
 import android.text.format.Formatter
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
@@ -29,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.clearout.app.ui.theme.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel,
@@ -177,8 +180,7 @@ fun HomeScreen(
                         }
                         DropdownMenu(
                             expanded = showMenu,
-                            onDismissRequest = { showMenu = false },
-                            containerColor = ClearoutPaper
+                            onDismissRequest = { showMenu = false }
                         ) {
                             DropdownMenuItem(
                                 text = {
