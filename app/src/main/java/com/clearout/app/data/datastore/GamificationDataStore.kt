@@ -102,4 +102,19 @@ class GamificationDataStore @Inject constructor(
             prefs[Keys.ONBOARDING_COMPLETED] = true
         }
     }
+
+    /**
+     * Resets all gamification stats (streak, XP, totals) but preserves onboarding state.
+     * Called from the Settings overflow menu on the Home screen.
+     */
+    suspend fun resetGamification() {
+        dataStore.edit { prefs ->
+            prefs[Keys.STREAK] = 0
+            prefs[Keys.XP_TOTAL] = 0
+            prefs[Keys.LAST_ACTIVE] = 0L
+            prefs[Keys.TOTAL_DELETED] = 0
+            prefs[Keys.TOTAL_BYTES] = 0L
+            // Intentionally NOT resetting ONBOARDING_COMPLETED
+        }
+    }
 }
