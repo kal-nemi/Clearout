@@ -43,26 +43,29 @@ The codebase isolates platform dependencies, business rules, and UI frameworks i
 
 ```mermaid
 graph TD
-    subgraph Presentation Layer (UI, Compose & State)
-        A[Compose UI Screens] -->|Observes Immutable State| B[ViewModel]
+    subgraph Presentation ["Presentation Layer (UI, Compose & State)"]
+        A["Compose UI Screens"] -->|Observes Immutable State| B["ViewModel"]
         B -->|Dispatches MVI Intents| A
     end
 
-    subgraph Domain Layer (Pure Business Logic)
-        B -->|Invokes Use Cases| C[Repository Interfaces]
-        C -->|Defines Contracts| D[Entity Models]
+    subgraph Domain ["Domain Layer (Pure Business Logic)"]
+        B -->|Invokes Use Cases| C["Repository Interfaces"]
+        C -->|Defines Contracts| D["Entity Models"]
     end
 
-    subgraph Data Layer (Sources, Storage & APIs)
-        C -->|Implemented by| E[MediaStoreRepositoryImpl]
-        E -->|Queries Securely| F[Android MediaStore Provider]
-        E -->|Persists Telemetry| G[Jetpack Preferences DataStore]
+    subgraph Data ["Data Layer (Sources, Storage & APIs)"]
+        C -->|Implemented by| E["MediaStoreRepositoryImpl"]
+        E -->|Queries Securely| F["Android MediaStore Provider"]
+        E -->|Persists Telemetry| G["Jetpack Preferences DataStore"]
     end
 
     style A fill:#FF5C1A,stroke:#333,stroke-width:2px,color:#fff
     style B fill:#1A1410,stroke:#333,stroke-width:2px,color:#fff
     style C fill:#9B9187,stroke:#333,stroke-width:2px,color:#fff
+    style D fill:#9B9187,stroke:#333,stroke-width:2px,color:#fff
     style E fill:#EDE9E2,stroke:#333,stroke-width:2px,color:#1A1410
+    style F fill:#EDE9E2,stroke:#333,stroke-width:2px,color:#1A1410
+    style G fill:#EDE9E2,stroke:#333,stroke-width:2px,color:#1A1410
 ```
 
 ### Low-Level Design (LLD)
