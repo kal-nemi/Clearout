@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.material3.Text
 import androidx.compose.ui.graphics.graphicsLayer
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * ClearOut branded splash screen.
@@ -212,7 +213,7 @@ private fun DrawScope.drawBrandMark() {
     // ── Swipe curved arrow: M82 63 Q100 63 108 48 (scaled) ──
     val arrowPath = Path().apply {
         moveTo(w * 0.586f, barY + barH / 2)   // M82/140 * w
-        quadraticTo(
+        quadraticBezierTo(
             w * 0.714f, barY + barH / 2,       // Q100/140
             w * 0.771f, h * 0.343f             // Q108/140, y48/140
         )
